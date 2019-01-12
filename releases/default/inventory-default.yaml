@@ -1,0 +1,16 @@
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: inventory-default
+  namespace: default
+  annotations:
+    flux.weave.works/automated: "true"
+    flux.weave.works/tag.chart-image: glob:1.0.*
+spec:
+  chart:
+    git: git@github.com:SachinKut/inventoryflux.git
+    path: charts/InventoryHelm
+  releaseName: inventoryrelease
+  values:
+    image: sachakstestreg.azurecr.io/inventory:1.0.1

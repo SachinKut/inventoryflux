@@ -1,0 +1,5 @@
+replicas: 1
+image: sachakstestreg.azurecr.io/inventory:1.0.1
+containerPort: 80
+servicePort: 80
+serviceContainerPort: 80

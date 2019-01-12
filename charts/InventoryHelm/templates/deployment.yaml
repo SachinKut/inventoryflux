@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inventory-deployment
+  app: inventory
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: inventory
+  template:
+    metadata:
+      labels:
+        app: inventory
+    spec:
+      containers:
+      - name: inventory-container
+        image: "{{ .Values.image }}"
+        ports:
+        - containerPort: {{ .Values.containerPort }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: inventory-service
+spec:
+  selector:
+    app: inventory
+  ports:
+  - name: http
+    port: {{ .Values.servicePort }}
+    targetPort: {{ .Values.serviceContainerPort }}
+  type: LoadBalancer
