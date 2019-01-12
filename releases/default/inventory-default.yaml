@@ -13,4 +13,4 @@ spec:
     path: charts/InventoryHelm
   releaseName: inventoryrelease
   values:
-    image: sachakstestreg.azurecr.io/inventory:1.0.1
+    image: sachakstestreg.azurecr.io/inventory:1.0.2
